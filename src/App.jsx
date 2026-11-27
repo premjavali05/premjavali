@@ -348,12 +348,13 @@ function Navbar() {
 
 function Portrait() {
   const [imageFailed, setImageFailed] = useState(false);
+
   return (
     <div className="portrait-wrap">
       <div className="portrait-card">
         {!imageFailed ? (
           <img
-            src="/images/Prem.png"
+            src={`${import.meta.env.BASE_URL}images/Prem.png`}
             alt="Prem M Javali"
             draggable={false}
             onContextMenu={(event) => event.preventDefault()}
