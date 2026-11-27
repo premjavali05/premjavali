@@ -234,8 +234,8 @@ button { color: inherit; }
   .main-nav__link--active { color: var(--mint); }
   .main-nav .nav-cta { align-self: flex-start; margin-top: 13px; }
   .nav-underline { display: none; }
-  .hero-section { padding-top: 42px; min-height: initial; }
-  .hero-layout { grid-template-columns: 1fr; gap: 7px; }
+  .hero-section { display: flex; flex-direction: column; padding-top: 42px; min-height: calc(100vh - 68px); min-height: calc(100svh - 68px); }
+  .hero-layout { flex: 1; grid-template-columns: 1fr; align-content: center; gap: 7px; }
   .hero-copy { padding: 0; }
   .availability { margin-bottom: 27px; }
   .hero-actions { flex-wrap: nowrap; gap: 8px; }
@@ -244,9 +244,10 @@ button { color: inherit; }
   .hero-role { margin-top: 20px; font-size: 15px; }
   .hero-summary { max-width: 560px; font-size: 13px; }
   .hero-socials { margin-top: 27px; }
-  .hero-art { min-height: 350px; margin-top: 10px; }
-  .portrait-wrap { width: min(100%, 350px); transform: translateX(6px); }
-  .hero-bottom { padding-top: 15px; padding-bottom: 8px; }
+  .hero-art { min-height: 0; margin-top: 10px; }
+  .portrait-wrap { width: min(100%, 176px); transform: translateX(6px); }
+  .portrait-card { width: 100%; border-radius: 16px; }
+  .hero-bottom { margin-top: auto; padding-top: 15px; padding-bottom: 8px; }
   .proof-grid { grid-template-columns: repeat(2,1fr); padding-block: 14px; }
   .proof-item, .proof-item:first-child, .proof-item:last-child { justify-content: flex-start; padding: 17px 13px; border-right: 0; }
   .proof-item:nth-child(odd) { border-right: 1px solid rgba(11,20,32,.16); }
