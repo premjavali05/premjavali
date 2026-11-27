@@ -1,10 +1,26 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { motion, useMotionValueEvent, useReducedMotion, useScroll } from 'framer-motion';
+import flaskLogo from 'devicon/icons/flask/flask-original.svg';
+import gitLogo from 'devicon/icons/git/git-original.svg';
+import huggingFaceLogo from 'devicon/icons/huggingface/huggingface-original.svg';
+import kerasLogo from 'devicon/icons/keras/keras-original.svg';
+import mongodbLogo from 'devicon/icons/mongodb/mongodb-original.svg';
+import mysqlLogo from 'devicon/icons/mysql/mysql-original.svg';
+import numpyLogo from 'devicon/icons/numpy/numpy-original.svg';
+import opencvLogo from 'devicon/icons/opencv/opencv-original.svg';
+import pandasLogo from 'devicon/icons/pandas/pandas-original.svg';
+import postgresqlLogo from 'devicon/icons/postgresql/postgresql-original.svg';
+import pythonLogo from 'devicon/icons/python/python-original.svg';
+import reactLogo from 'devicon/icons/react/react-original.svg';
+import scikitLearnLogo from 'devicon/icons/scikitlearn/scikitlearn-original.svg';
+import streamlitLogo from 'devicon/icons/streamlit/streamlit-original.svg';
+import tensorflowLogo from 'devicon/icons/tensorflow/tensorflow-original.svg';
 import {
   ArrowDownRight,
   ArrowRight,
   ArrowUp,
   ArrowUpRight,
+  BarChart3,
   BrainCircuit,
   BriefcaseBusiness,
   Check,
@@ -14,7 +30,6 @@ import {
   ExternalLink,
   Github,
   HeartHandshake,
-  Layers3,
   Linkedin,
   Mail,
   Menu,
@@ -45,103 +60,148 @@ const navItems = [
   ['Contact', 'contact'],
 ];
 
+function PowerBiLogo() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="#F2C811" d="M3 13h4v8H3zm7-5h4v13h-4zm7-6h4v19h-4z" />
+    </svg>
+  );
+}
+
+function ExcelLogo() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="#107C41" d="M9 2h13v20H9z" />
+      <path fill="#21A366" d="M13 2h9v20h-9z" />
+      <path fill="#185C37" d="M2 5h12v14H2z" />
+      <path d="m5 9 2 3-2 3m4-6-2 3 2 3" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+    </svg>
+  );
+}
+
+function TableauLogo() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <g fill="none" stroke="#1F75A8" strokeLinecap="round" strokeWidth="1.6">
+        <path d="M12 12 12 3M12 12 20 12M12 12 12 21M12 12 4 12M12 12 6 6M12 12 18 6M12 12 6 18M12 12 18 18" />
+      </g>
+      <g fill="#1F75A8">
+        <circle cx="12" cy="12" r="2.5" />
+        <circle cx="12" cy="3" r="1.5" />
+        <circle cx="20" cy="12" r="1.5" />
+        <circle cx="12" cy="21" r="1.5" />
+        <circle cx="4" cy="12" r="1.5" />
+        <circle cx="6" cy="6" r="1.4" />
+        <circle cx="18" cy="6" r="1.4" />
+        <circle cx="6" cy="18" r="1.4" />
+        <circle cx="18" cy="18" r="1.4" />
+      </g>
+    </svg>
+  );
+}
+
 const specialties = [
   {
     number: '01',
-    icon: BrainCircuit,
-    title: 'AI & Machine Learning',
-    description: 'Turning structured and unstructured data into useful predictions, classifiers, and practical ML workflows.',
-    tags: ['Python', 'Scikit-learn', 'TensorFlow', 'Keras', 'NLP', 'Computer Vision'],
+    label: 'FOUNDATIONS',
+    title: 'Programming & Data',
+    skills: [
+      { name: 'Python', logo: pythonLogo },
+      { name: 'SQL', icon: Database },
+      { name: 'Pandas', logo: pandasLogo },
+      { name: 'NumPy', logo: numpyLogo },
+      { name: 'MySQL', logo: mysqlLogo },
+      { name: 'MongoDB', logo: mongodbLogo },
+      { name: 'PostgreSQL', logo: postgresqlLogo },
+    ],
   },
   {
     number: '02',
-    icon: Sparkles,
-    title: 'Generative AI & LLMs',
-    description: 'Building AI-assisted experiences with prompt design, structured outputs, OCR pipelines, and model APIs.',
-    tags: ['LLM APIs', 'Prompt Engineering', 'Mistral AI', 'OCR', 'Evaluation'],
+    label: 'MODELING',
+    title: 'Machine Learning & Vision',
+    skills: [
+      { name: 'Scikit-learn', logo: scikitLearnLogo },
+      { name: 'TensorFlow', logo: tensorflowLogo },
+      { name: 'Keras', logo: kerasLogo },
+      { name: 'OpenCV', logo: opencvLogo },
+      { name: 'Computer Vision', icon: ScanEye },
+      { name: 'Feature Engineering', icon: BrainCircuit },
+    ],
   },
   {
     number: '03',
-    icon: Code2,
-    title: 'Full-Stack Development',
-    description: 'Connecting clean interfaces with reliable server-side workflows, data persistence, and useful integrations.',
-    tags: ['React', 'JavaScript', 'REST APIs', 'PHP', 'Flask', 'MongoDB', 'MySQL'],
+    label: 'INTELLIGENCE',
+    title: 'Generative AI & NLP',
+    skills: [
+      { name: 'NLP', icon: MessageCircle },
+      { name: 'LLM APIs', icon: Sparkles },
+      { name: 'Prompt Engineering', icon: Code2 },
+      { name: 'Mistral AI', icon: BrainCircuit },
+      { name: 'Hugging Face', logo: huggingFaceLogo },
+      { name: 'OCR', icon: ScanEye },
+      { name: 'Evaluation', icon: Check },
+    ],
   },
   {
     number: '04',
-    icon: Database,
-    title: 'Data & Analytics',
-    description: 'Cleaning and exploring data, finding patterns, and presenting findings through clear dashboards.',
-    tags: ['SQL', 'Pandas', 'NumPy', 'Power BI', 'DAX', 'Excel', 'Tableau'],
+    label: 'DELIVERY',
+    title: 'Apps, APIs & BI',
+    skills: [
+      { name: 'React', logo: reactLogo },
+      { name: 'REST APIs', icon: Network },
+      { name: 'Flask', logo: flaskLogo },
+      { name: 'Streamlit', logo: streamlitLogo },
+      { name: 'Git', logo: gitLogo },
+      { name: 'Power BI', brand: PowerBiLogo },
+      { name: 'DAX', icon: BarChart3 },
+      { name: 'Excel', brand: ExcelLogo },
+      { name: 'Tableau', brand: TableauLogo },
+    ],
   },
 ];
 
 const projects = [
   {
     category: 'GENERATIVE AI',
-    icon: Layers3,
     title: 'TimeLens — Manuscript Intelligence',
     description: 'An AI pipeline designed to extract Sanskrit text from scanned manuscript images, refine OCR output, and translate the text into five modern languages.',
     github: 'https://github.com/premjavali05/Sanskrit_Manuscripts',
     stack: ['Python', 'OpenCV', 'EasyOCR', 'NLP', 'Translation models'],
-    visual: 'project-visual--mint',
-    mark: 'अ',
-    outcome: 'OCR → language-aware refinement → translation',
-  },
-  {
-    category: 'COMPUTER VISION',
-    icon: ScanEye,
-    title: 'Plant Disease Detection',
-    description: 'A transfer-learning image classifier that identifies plant diseases from leaf images and supports early intervention for more sustainable agriculture.',
-    github: 'https://github.com/premjavali05/Plant-Disease-Detection-System',
-    stack: ['TensorFlow', 'Keras', 'MobileNetV2', 'OpenCV', 'Streamlit'],
-    visual: 'project-visual--green',
-    mark: '◎',
-    outcome: '97.35% test accuracy · 38 disease classes',
   },
   {
     category: 'LLM APPLICATION',
-    icon: Sparkles,
     title: 'Monument Recognition & History',
     description: 'A Streamlit application using a Mistral AI agent to recognize monument images and present historical context, with text input as a fallback.',
     github: 'https://github.com/premjavali05/Monument_Recognition',
     stack: ['Python', 'Streamlit', 'Mistral AI', 'Prompt Engineering'],
-    visual: 'project-visual--blue',
-    mark: '⌘',
-    outcome: 'Image understanding paired with grounded context',
-  },
-  {
-    category: 'NLP / MACHINE LEARNING',
-    icon: MessageCircle,
-    title: 'SMS Spam Detection',
-    description: 'An end-to-end NLP workflow to classify messages as spam or ham, from text cleaning and TF-IDF feature extraction to model evaluation and an interactive demo.',
-    github: 'https://github.com/premjavali05/SMS_Spam_Detection',
-    stack: ['Python', 'Scikit-learn', 'NLTK', 'TF-IDF', 'Streamlit'],
-    visual: 'project-visual--peach',
-    mark: '01',
-    outcome: 'Text preprocessing · classification · real-time inference',
   },
   {
     category: 'FULL-STACK / CIVIC TECH',
-    icon: Network,
     title: 'Infra-Alert — Civic Issue Reporting',
     description: 'A web platform for reporting local issues with images and geolocation, helping route actionable information into a structured complaint workflow.',
     github: 'https://github.com/premjavali05/Infra_Alert',
     stack: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL', 'Cloudinary', 'Maps API'],
-    visual: 'project-visual--violet',
-    mark: '↗',
-    outcome: 'Image uploads · geolocation · report generation',
+  },
+  {
+    category: 'NLP / MACHINE LEARNING',
+    title: 'SMS Spam Detection',
+    description: 'An end-to-end NLP workflow to classify messages as spam or ham, from text cleaning and TF-IDF feature extraction to model evaluation and an interactive demo.',
+    github: 'https://github.com/premjavali05/SMS_Spam_Detection',
+    stack: ['Python', 'Scikit-learn', 'NLTK', 'TF-IDF', 'Streamlit'],
+  },
+  {
+    category: 'COMPUTER VISION',
+    title: 'Plant Disease Detection',
+    description: 'A transfer-learning image classifier that identifies plant diseases from leaf images and supports early intervention for more sustainable agriculture.',
+    github: 'https://github.com/premjavali05/Plant-Disease-Detection-System',
+    stack: ['TensorFlow', 'Keras', 'MobileNetV2', 'OpenCV', 'Streamlit', '97.35% test accuracy · 38 classes'],
   },
   {
     category: 'DATA ANALYTICS',
-    icon: Database,
     title: 'HR Analytics Dashboard',
     description: 'An interactive dashboard exploring attrition, attendance, leave patterns, and workforce trends to help make people data easier to interpret.',
     github: 'https://github.com/premjavali05/Revenue_Insights',
     stack: ['Power BI', 'DAX', 'Excel', 'Data Visualization'],
-    visual: 'project-visual--slate',
-    mark: '▥',
-    outcome: 'Workforce patterns presented at a glance',
   },
 ];
 
@@ -305,10 +365,7 @@ function Portrait() {
             <span className="portrait-placeholder-caption">Add your portrait</span>
           </div>
         )}
-        <span className="portrait-label"><span className="status-dot" /> Building with purpose</span>
       </div>
-      <div className="float-chip float-chip--top"><BrainCircuit size={17} /><span>AI that helps</span></div>
-      <div className="float-chip float-chip--bottom"><Code2 size={17} /><span>Products that work</span></div>
     </div>
   );
 }
@@ -322,12 +379,12 @@ function Hero() {
           <Reveal>
             <div className="availability"><span className="status-dot" /> Open to AI/ML opportunities</div>
             <p className="hero-pretitle">HELLO, I’M</p>
-            <h1>Prem M<br /><span>Javali.</span></h1>
+            <h1>{PROFILE.name}</h1>
             <p className="hero-role">M.Tech in AI <span>×</span> Aspiring AI/ML Engineer</p>
             <p className="hero-summary">I turn ideas into useful technology — from machine learning and LLM-powered tools to full-stack applications that solve real-world problems.</p>
             <div className="hero-actions">
               <a className="button button--primary" href="#projects">Explore my work <ArrowDownRight size={17} /></a>
-              <a className="button button--quiet" href={PROFILE.resume} target="_blank" rel="noreferrer">Download résumé <Download size={16} /></a>
+              <a className="button button--quiet" href={PROFILE.resume} target="_blank" rel="noreferrer">Resume <Download size={16} /></a>
             </div>
             <div className="hero-socials" aria-label="Social links">
               <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={17} /></a>
@@ -345,7 +402,6 @@ function Hero() {
       <div className="hero-bottom container">
         <span>SCROLL TO EXPLORE</span>
         <span className="scroll-line" />
-        <span className="hero-index">01 / 06</span>
       </div>
     </section>
   );
@@ -355,7 +411,7 @@ function ProofStrip() {
   const items = [
     { value: '9.4/10', label: 'Academic CGPA' },
     { value: 'IEEE', label: 'Research publication' },
-    { value: '2nd', label: 'Hackathon placement' },
+    { value: '2nd', label: 'Hackathon winner' },
   ];
   return (
     <section className="proof-section" aria-label="Highlights">
@@ -381,7 +437,7 @@ function About() {
           <div className="about-quote-mark">“</div>
         </Reveal>
         <Reveal className="about-body" delay={0.1}>
-          <p className="lead">I'm pursuing an M.Tech in Artificial Intelligence at REVA University, building on my foundation in Computer Science and Engineering.</p>
+          <p className="lead">I'm currently pursuing M.Tech in Artificial Intelligence at REVA University, building on my foundation in Computer Science and Engineering.</p>
           <p>My interests span machine learning, computer vision, generative AI, and full-stack development. I enjoy taking ideas beyond theory and turning them into practical applications that solve meaningful problems.</p>
           <p>From developing a plant disease detection model and AI-powered monument recognition tools to building OCR pipelines and civic-tech platforms, I've explored how AI and software engineering can work together to create useful solutions.</p>
           <p>Through my projects and internship experiences, I've worked with Python, machine learning frameworks, LLM-based applications, and web technologies. I'm continually strengthening my understanding of AI while learning to build reliable, maintainable, and user-focused applications.</p>
@@ -397,19 +453,31 @@ function Expertise() {
     <section className="section expertise-section" id="expertise">
       <div className="container">
         <Reveal>
-          <SectionHeading eyebrow="WHAT I BRING" title={<>One toolkit. <span>Multiple ways to build.</span></>} description="A multidisciplinary skill set for taking ideas from data and models all the way to usable products." />
+          <SectionHeading eyebrow="WHAT I BRING" title={<>One toolkit. <span>Multiple ways to build.</span></>} />
         </Reveal>
         <div className="specialty-grid">
           {specialties.map((item, i) => {
-            const Icon = item.icon;
             return (
               <Reveal key={item.number} delay={i * 0.07} className="specialty-card-wrap">
                 <article className="specialty-card">
-                  <div className="card-topline"><span className="card-number">{item.number}</span><span className="icon-tile"><Icon size={21} strokeWidth={1.7} /></span></div>
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                  <div className="tag-list">{item.tags.map(tag => <span className="tag" key={tag}>{tag}</span>)}</div>
-                  <span className="card-arrow"><ArrowUpRight size={18} /></span>
+                  <div className="specialty-card-heading">
+                    <h3>{item.title}</h3>
+                    <span className="specialty-card-meta">{item.number} / {item.label}</span>
+                  </div>
+                  <div className="skill-list">
+                    {item.skills.map((skill) => {
+                      const SkillIcon = skill.icon;
+                      const BrandLogo = skill.brand;
+                      return (
+                        <span className="skill-item" key={skill.name}>
+                          <span className={`skill-logo${skill.logo || BrandLogo ? ' skill-logo--brand' : ' skill-logo--concept'}`} aria-hidden="true">
+                            {skill.logo ? <img src={skill.logo} alt="" /> : BrandLogo ? <BrandLogo /> : <SkillIcon size={17} strokeWidth={2} />}
+                          </span>
+                          <span className="skill-name">{skill.name}</span>
+                        </span>
+                      );
+                    })}
+                  </div>
                 </article>
               </Reveal>
             );
@@ -421,29 +489,24 @@ function Expertise() {
 }
 
 function ProjectCard({ project, index }) {
-  const Icon = project.icon;
-  const githubUrl = project.github || PROFILE.github;
   return (
     <Reveal delay={(index % 2) * 0.07} className="project-card-wrap">
       <article className="project-card">
-        <div className={`project-visual ${project.visual}`}>
-          <div className="visual-grid" />
-          <span className="project-category">{project.category}</span>
-          <span className="project-mark">{project.mark}</span>
-          <div className="visual-icon"><Icon size={21} /></div>
-          <span className="visual-number">{String(index + 1).padStart(2, '0')}</span>
-        </div>
         <div className="project-content">
-          <div className="project-title-row"><h3>{project.title}</h3><ArrowUpRight size={18} className="project-title-arrow" /></div>
+          <div className="project-card-meta">
+            <span className="project-category">{project.category}</span>
+          </div>
+          <h3 className="project-title">{project.title}</h3>
           <p>{project.description}</p>
-          <div className="project-outcome"><span className="outcome-dot" />{project.outcome}</div>
+          <div className="tag-list project-tags">{project.stack.map(tag => <span className="tag" key={tag}>{tag}</span>)}</div>
           <div className="project-card-footer">
-            <div className="tag-list project-tags">{project.stack.map(tag => <span className="tag" key={tag}>{tag}</span>)}</div>
-            <a className="button button--primary project-github-link" href={githubUrl} target="_blank" rel="noreferrer">
-              <Github size={15} />
-              {project.github ? 'View project on GitHub' : 'Browse GitHub profile'}
-              <ExternalLink size={14} />
-            </a>
+            {project.github ? (
+              <a className="project-repository" href={project.github} target="_blank" rel="noreferrer">
+                View repository <ArrowUpRight size={15} />
+              </a>
+            ) : (
+              <span className="project-repository project-repository--missing">Repository link not provided</span>
+            )}
           </div>
         </div>
       </article>
@@ -502,6 +565,7 @@ function Experience() {
           </Reveal>
         </div>
         <div className="timeline">
+          <span className="eyebrow timeline-mobile-heading">EXPERIENCE</span>
           {experience.map((item, i) => (
             <Reveal key={item.title} className="timeline-item" delay={i * 0.08}>
               <div className="timeline-marker"><span /></div>

@@ -2,12 +2,12 @@
 
 A responsive, single-page developer portfolio built with React + Vite, Framer Motion, and Lucide icons. It is designed to deploy as a static site on Vercel's free Hobby plan.
 
-## Before launch: personalize these two items
+## Before launch: confirm these two items
 
-1. **Add the real portrait:** save a professional headshot as `public/images/profile.jpg`. The page automatically uses it. If the file is absent, the page displays a PJ placeholder. Use a vertical image with the face near the top; roughly 900 × 1100 px works well.
+1. **Confirm the portrait:** the page currently uses `public/images/Prem.png`. Replace that file with the approved professional headshot if needed.
 2. **Review every fact and link:** project descriptions and experience entries were drafted from the supplied résumé. Confirm wording, dates, performance figures, contact details, project repository links, and the résumé PDF with the profile owner before publishing.
 
-The downloadable résumé currently included is `public/Prem-M-Javali-Resume.pdf`.
+The downloadable résumé currently included is `public/Prem_Mahantesh_Javali1.pdf`.
 
 ## Install on a new Windows laptop
 
@@ -61,8 +61,8 @@ If Git is not installed, install it from https://git-scm.com/download/win and re
 ```text
 portfolio-launch-kit/
 ├── public/
-│   ├── images/profile.jpg        # add the real headshot here
-│   └── Prem-M-Javali-Resume.pdf
+│   ├── images/Prem.png           # profile portrait
+│   └── Prem_Mahantesh_Javali1.pdf
 ├── src/
 │   ├── App.jsx                   # content and React sections
 │   ├── main.jsx
@@ -77,13 +77,13 @@ portfolio-launch-kit/
 
 - **Colors:** edit the CSS variables at the top of `src/styles.css` (`--navy`, `--mint`, `--paper`, and `--ink`).
 - **Text, skills, projects, experience:** edit the data arrays and the `PROFILE` object near the top of `src/App.jsx`. Add new projects at the beginning of the `projects` array to show them first; project numbers update automatically. Keep each project's skills and green GitHub button together in the card footer; the skills wrap as needed beside the button. Use a direct repository link when available, or the GitHub profile link otherwise.
-- **Portrait:** replace `public/images/profile.jpg` with the approved image (keep the same filename).
-- **Résumé:** replace `public/Prem-M-Javali-Resume.pdf` with the final approved PDF using the same filename.
+- **Portrait:** replace `public/images/Prem.png` with the approved image (keep the same filename).
+- **Résumé:** replace `public/Prem_Mahantesh_Javali1.pdf` with the final approved PDF using the same filename.
 - **Reduced motion:** the reveal animations respect the device's reduced-motion preference.
 
 ## Launch checklist
 
-- [ ] Replace the PJ placeholder with the client's approved portrait.
+- [ ] Confirm the current portrait is approved.
 - [ ] Confirm name, role title, phone, email, LinkedIn, and GitHub links.
 - [ ] Confirm project facts and metrics against the final résumé.
 - [ ] Confirm the résumé download is the correct final version.
